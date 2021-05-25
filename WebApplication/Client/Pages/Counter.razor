@@ -1,0 +1,42 @@
+﻿@page "/counter"
+
+<h1>Counter</h1>
+
+<p>Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<br /><br />
+
+<p>Random number: @randomNumber</p>
+<button class="btn btn-primary" @onclick="GetNumber">Click me</button>
+<br /><br />
+<button class="btn btn-secondary" @onclick="ThrowEx">Click me</button>
+
+@* 
+TODO: Test debug Client code
+1. Run Debug
+2. Set a breakpoint on the currentCount++; line in Pages/Counter.razor
+3. In the browser, navigate to Counter page and select the Click me button to hit the breakpoint.
+4. Continue execution
+*@
+@code {
+    private int currentCount = 0;
+    private int randomNumber = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+
+    private void GetNumber()
+    {
+        Actions a = new Actions();
+        randomNumber = a.GenerateRandomNumber();
+    }
+
+    private void ThrowEx()
+    {
+        throw new Exception("This is EXCEPTION!");
+    }
+
+}
